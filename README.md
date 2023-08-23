@@ -12,6 +12,4 @@ Additional modules used: axios, bcrypt, cors, dotenv, jsonwebtoken, mongoose
 4. Start the project with `npm start` command. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
-#### Contributors: https://github.com/nkilm <br/><br/> https://github.com/IshitaBharadwaj <br/><br/>  https://github.com/hita03            
 
-#### Mini Project for UE20CS204 - Web Technologies - 3rd Semester.

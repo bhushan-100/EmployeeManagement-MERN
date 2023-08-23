@@ -190,7 +190,7 @@ exports.update = (req, res) => {
             res.status(500).send({ message: "Error update user info" })
         })
 }
-
+//deleting a user
 exports.delete = (req, res) => {
     const id = req.params.id;
     Employee.findByIdAndDelete(id)
@@ -199,7 +199,7 @@ exports.delete = (req, res) => {
                 res.status(404).send({ message: "Cannot Delete" })
             } else {
                 res.send({
-                    message: "del succesfully"
+                    message: "deleted succesfully"
                 })
             }
         })
