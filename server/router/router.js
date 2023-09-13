@@ -139,3 +139,25 @@ router.route('/users/remove/:id').get(function (req, res) {
     else res.json('Employee Deleted Successfully');
     });
     });
+    
+    // Add a new route for searching employees by name
+    router.get('/search', async (req, res) => {
+      const searchQuery = req.query.q; // Get the search query from the request query parameters
+    
+      try {
+        // Use a regular expression with case-insensitive search to find employees by name
+        const employees = await Employee.find({
+          name: { $regex: searchQuery, $options: 'i' }, // 'i' for case-insensitive search
+        });
+    
+        res.json(employees);
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+    });
+    
+    // Other routes and middleware...
+    
+    module.exports = router;
+    
