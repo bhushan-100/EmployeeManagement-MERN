@@ -1,3 +1,4 @@
+
 const bcrypt = require('bcrypt');
 const User = require('../model/schema');
 const jwt = require('jsonwebtoken');
@@ -23,12 +24,12 @@ exports.registerUser = async (req, res) => {
             res.status(406).json({ err: "Password must be same for verification" });
 
         // hashing password
-        const hash = await bcrypt.hashSync(password, 10)
+        //const hash = await bcrypt.hashSync(password, 10)
 
         // using document structure
         const newUser = new User({
             email,
-            password: hash,
+            password,
             username
         })
 
@@ -68,9 +69,10 @@ exports.login = async (req, res) => {
             return res.status(406).json({ err: "No account with this email." })
 
         // compare the password
-        const isMatch = await bcrypt.compare(password, user.password);
 
-        if (!isMatch) return res.status(406).json({ err: "Invalid Credentials" });
+        const isMatch = await bcrypt.compare(password, user.password);
+        
+        if (!isMatch) return res.status(401).json({ err: "Invalid Credentials" });
 
         // create jwt token
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET)

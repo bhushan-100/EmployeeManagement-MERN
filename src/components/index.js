@@ -6,3 +6,4 @@ export {default as List} from "./pages/List";
 export {default as Update} from "./pages/Update";
 export {default as Holiday} from "./pages/Holiday";
 export {default as Profile} from "./pages/Profile";
+export {default as Leave} from "./pages/Leave";
